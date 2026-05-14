@@ -21,6 +21,7 @@ This server is designed with **defense-in-depth** security principles:
 ### Available Tools
 
 - **`get_system_info`** - Get basic system information (kernel, OS distribution)
+- **`list_kali_tools`** - List available Kali Linux security tools
 - **`dns_lookup`** - DNS queries (A, AAAA, MX, TXT, NS, CNAME records)
 - **`whois_lookup`** - Domain registration information
 - **`nmap_scan`** - Safe network scanning (quick or service detection)
@@ -155,6 +156,21 @@ Returns:
 {
   "kernel_info": "Linux kali 6.6.0-kali6-amd64 #1 SMP PREEMPT_DYNAMIC...",
   "distribution_info": "Distributor ID: Kali\nDescription: Kali GNU/Linux Rolling...",
+  "error": null
+}
+```
+
+### List Kali Tools
+
+```python
+list_kali_tools()
+```
+
+Returns:
+```json
+{
+  "kali_tool_packages": "ii  kali-tools-gpu  2024.1.0  amd64...",
+  "security_binaries": ["nmap", "netcat", "tcpdump", ...],
   "error": null
 }
 ```

@@ -58,3 +58,50 @@ def register_system_tools(mcp: FastMCP, command_runner: SafeCommandRunner, logge
         
         logger.info("get_system_info completed successfully")
         return results
+    
+    @mcp.tool()
+    def list_kali_tools() -> dict[str, Any]:
+        """
+        List available Kali Linux security tools.
+        
+        Returns a list of installed security tools by checking:
+        - Installed kali-tools packages
+        - Common security tool binaries
+        
+        This is a read-only operation and safe to run.
+        """
+        logger.info("Tool called: list_kali_tools")
+        
+        results = {
+            "kali_tool_packages": [],
+            "security_binaries": [],
+            "error": None
+        }
+        
+        # Get installed kali-tools packages
+        dpkg_result = command_runner.run(["dpkg", "-l", "kali-tools-*"], timeout=60)
+        if dpkg_result.success:
+            results["kali_tool_packages"] = dpkg_result.stdout.strip()
+        else:
+            results["error"] = f"dpkg command failed: {dpkg_result.stderr}"
+            logger.warning(f"dpkg command failed: {dpkg_result.stderr}")
+        
+        # List common security tool binaries from /usr/bin
+        # This is a safe read-only operation
+        ls_result = command_runner.run(["ls", "/usr/bin"], timeout=30)
+        if ls_result.success:
+            # Filter for common security tool names
+            security_keywords = ['nmap', 'wireshark', 'metasploit', 'burpsuite', 'sqlmap', 
+                                'hydra', 'john', 'hashcat', 'aircrack', 'gobuster', 'nikto',
+                                'netcat', 'tcpdump', 'wireshark', 'ettercap', 'maltego']
+            
+            binaries = ls_result.stdout.strip().split('\n')
+            security_binaries = [b for b in binaries if any(keyword in b.lower() for keyword in security_keywords)]
+            results["security_binaries"] = security_binaries
+        else:
+            if not results["error"]:
+                results["error"] = f"ls command failed: {ls_result.stderr}"
+            logger.warning(f"ls command failed: {ls_result.stderr}")
+        
+        logger.info("list_kali_tools completed successfully")
+        return results
