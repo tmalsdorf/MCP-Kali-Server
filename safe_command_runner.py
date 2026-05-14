@@ -51,6 +51,7 @@ class SafeCommandRunner:
             'nmap',
             'curl',
             'openssl',
+            'gobuster',
         }
     
     def run(

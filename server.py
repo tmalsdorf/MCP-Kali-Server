@@ -70,6 +70,7 @@ def create_server() -> FastMCP:
             register_http_tools,
             register_ssl_tools,
             register_whois_tools,
+            register_gobuster_tools,
         )
         
         # Register system tools
@@ -95,6 +96,10 @@ def create_server() -> FastMCP:
         # Register SSL tools
         register_ssl_tools(mcp, command_runner, logger, config)
         logger.info("SSL tools registered")
+        
+        # Register gobuster tools
+        register_gobuster_tools(mcp, command_runner, logger, config)
+        logger.info("Gobuster tools registered")
         
         logger.info("All tools registered successfully")
         

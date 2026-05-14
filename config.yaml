@@ -72,6 +72,17 @@ tools:
     # Connection timeout in seconds
     connection_timeout: 10
 
+  # Gobuster settings
+  gobuster:
+    # Default wordlist for directory brute-forcing
+    default_wordlist: "/usr/share/wordlists/dirb/common.txt"
+    
+    # Maximum number of threads
+    max_threads: 10
+    
+    # Scan timeout in seconds
+    scan_timeout: 120
+
 # Logging settings
 logging:
   # Log all tool calls
