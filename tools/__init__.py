@@ -10,6 +10,7 @@ from .http_tools import register_http_tools
 from .ssl_tools import register_ssl_tools
 from .whois_tools import register_whois_tools
 from .gobuster_tools import register_gobuster_tools
+from .dirb_tools import register_dirb_tools
 
 __all__ = [
     'register_system_tools',
@@ -19,4 +20,5 @@ __all__ = [
     'register_ssl_tools',
     'register_whois_tools',
     'register_gobuster_tools',
+    'register_dirb_tools',
 ]

@@ -26,6 +26,7 @@ This server is designed with **defense-in-depth** security principles:
 - **`whois_lookup`** - Domain registration information
 - **`nmap_scan`** - Safe network scanning (quick or service detection)
 - **`gobuster_scan`** - Directory brute-forcing with gobuster
+- **`dirb_scan`** - Directory brute-forcing with dirb
 - **`http_headers_check`** - HTTP header analysis
 - **`ssl_certificate_check`** - SSL/TLS certificate validation
 
@@ -233,6 +234,25 @@ Returns:
   "target": "http://example.com",
   "wordlist": "/usr/share/wordlists/dirb/common.txt",
   "threads": 10,
+  "results": ["http://example.com/admin", "http://example.com/login", ...],
+  "raw_output": "..."
+}
+```
+
+**Note**: By default, public IP addresses are blocked. Set `allow_public_ips: true` in `config.yaml` to enable scanning public targets.
+
+### Dirb Scan
+
+```python
+dirb_scan(target="http://example.com")
+```
+
+Returns:
+```json
+{
+  "success": true,
+  "target": "http://example.com",
+  "wordlist": "/usr/share/wordlists/dirb/common.txt",
   "results": ["http://example.com/admin", "http://example.com/login", ...],
   "raw_output": "..."
 }
