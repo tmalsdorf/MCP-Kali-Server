@@ -52,6 +52,7 @@ class SafeCommandRunner:
             'curl',
             'openssl',
             'gobuster',
+            'dirb',
         }
     
     def run(

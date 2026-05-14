@@ -71,6 +71,7 @@ def create_server() -> FastMCP:
             register_ssl_tools,
             register_whois_tools,
             register_gobuster_tools,
+            register_dirb_tools,
         )
         
         # Register system tools
@@ -100,6 +101,10 @@ def create_server() -> FastMCP:
         # Register gobuster tools
         register_gobuster_tools(mcp, command_runner, logger, config)
         logger.info("Gobuster tools registered")
+        
+        # Register dirb tools
+        register_dirb_tools(mcp, command_runner, logger, config)
+        logger.info("Dirb tools registered")
         
         logger.info("All tools registered successfully")
         
