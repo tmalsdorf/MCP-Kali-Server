@@ -1,0 +1,18 @@
+[project]
+name = "mcp-kali-server"
+version = "0.1.0"
+description = "A safe MCP server for Kali Linux security tools with strong guardrails"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=0.9.0",
+    "pyyaml>=6.0.0",
+    "pydantic>=2.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+mcp-kali-server = "server:main"

@@ -1,0 +1,87 @@
+# MCP-Kali-Server Configuration
+# This file controls safety settings for the MCP server
+
+# General settings
+server:
+  name: "mcp-kali-server"
+  version: "0.1.0"
+  log_level: "INFO"
+  log_file: "logs/mcp_kali_server.log"
+
+# Safety settings
+safety:
+  # Allow scanning of public IP addresses
+  # Set to false to only allow private network ranges and local targets
+  allow_public_ips: false
+  
+  # Command timeout in seconds
+  command_timeout: 30
+  
+  # Maximum number of concurrent operations
+  max_concurrent_operations: 3
+
+# Tool-specific settings
+tools:
+  # nmap settings
+  nmap:
+    # Allowed scan types
+    allowed_scan_types:
+      - "quick"
+      - "service"
+    
+    # Additional safe nmap flags (always applied)
+    safe_flags:
+      - "-T3"  # Normal timing
+      - "-Pn"  # Skip host discovery (for testing)
+    
+    # Maximum ports to scan
+    max_ports: 100
+
+  # DNS settings
+  dns:
+    # Allowed record types
+    allowed_record_types:
+      - "A"
+      - "AAAA"
+      - "MX"
+      - "TXT"
+      - "NS"
+      - "CNAME"
+    
+    # DNS server to use (empty for system default)
+    dns_server: ""
+
+  # HTTP settings
+  http:
+    # Allowed URL schemes
+    allowed_schemes:
+      - "http"
+      - "https"
+    
+    # Request timeout in seconds
+    request_timeout: 10
+    
+    # Maximum redirects to follow
+    max_redirects: 5
+
+  # SSL settings
+  ssl:
+    # Default port for SSL checks
+    default_port: 443
+    
+    # Connection timeout in seconds
+    connection_timeout: 10
+
+# Logging settings
+logging:
+  # Log all tool calls
+  log_tool_calls: true
+  
+  # Log command execution
+  log_commands: true
+  
+  # Include timestamps in logs
+  include_timestamps: true
+  
+  # Log file rotation (days)
+  rotation_days: 7
