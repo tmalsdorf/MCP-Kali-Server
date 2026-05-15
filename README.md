@@ -368,6 +368,10 @@ Returns:
 }
 ```
 
+### Shodan Host Lookup
+
+```python
+shodan_host_lookup(target="192.168.1.1", api_key="your_api_key")
 ### crt.sh Subdomain Lookup
 
 ```python
@@ -438,6 +442,19 @@ Returns:
 ```json
 {
   "success": true,
+  "target": "192.168.1.1",
+  "ip": "192.168.1.1",
+  "hostnames": ["example.com"],
+  "country": "United States",
+  "city": "San Francisco",
+  "org": "Example Organization",
+  "isp": "Example ISP",
+  "asn": "AS12345",
+  "ports": [80, 443, 22],
+  "vulns": ["CVE-2021-1234"],
+  "vuln_count": 1,
+  "services": [...],
+  "service_count": 3,
   "domain": "example.com",
   "breaches": [
     {
@@ -459,6 +476,7 @@ Returns:
 }
 ```
 
+**Note**: Requires a Shodan API key. Get one from https://developer.shodan.io/api. Set the API key in `config.yaml` under `tools.shodan.api_key` or pass as a parameter. This tool queries Shodan's passive database of known exposed services.
 **Note**: Requires a Have I Been Pwned API key. Get one from https://haveibeenpwned.com/API/Key. Set the API key in `config.yaml` under `tools.breach.api_key` or pass as a parameter. This tool checks if a domain's emails have been involved in any data breaches.
 
 ## Project Structure
