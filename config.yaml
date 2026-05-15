@@ -106,6 +106,30 @@ tools:
     # Scan timeout in seconds
     scan_timeout: 60
 
+  # theHarvester settings
+  theharvester:
+    # Scan timeout in seconds
+    scan_timeout: 120
+
+  # Shodan settings
+  shodan:
+    # Shodan API key (get from https://developer.shodan.io/api)
+  # GitHub settings
+  github:
+    # GitHub API token (get from https://github.com/settings/tokens)
+    api_key: ""
+    # Scan timeout in seconds
+    scan_timeout: 30
+
+  # crt.sh settings
+  crtsh:
+  # Breach settings
+  breach:
+    # Have I Been Pwned API key (get from https://haveibeenpwned.com/API/Key)
+    api_key: ""
+    # Scan timeout in seconds
+    scan_timeout: 30
+
   # WPScan settings
   wpscan:
     # Scan timeout in seconds
@@ -115,6 +139,10 @@ tools:
   sqlmap:
     # Scan timeout in seconds
     scan_timeout: 180
+  # theHarvester settings
+  theharvester:
+    # Scan timeout in seconds
+    scan_timeout: 120
 
 # Logging settings
 logging:

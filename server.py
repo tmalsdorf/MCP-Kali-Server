@@ -79,6 +79,8 @@ def create_server() -> FastMCP:
             register_shodan_tools,
             register_crtsh_tools,
             register_wayback_tools,
+            register_github_tools,
+            register_breach_tools,
         )
         
         # Register system tools
@@ -121,6 +123,18 @@ def create_server() -> FastMCP:
         register_sqlmap_tools(mcp, command_runner, logger, config)
         logger.info("SQLMap tools registered")
         
+        # Register theharvester tools
+        register_theharvester_tools(mcp, command_runner, logger, config)
+        logger.info("theHarvester tools registered")
+        
+        # Register breach tools
+        register_breach_tools(mcp, command_runner, logger, config)
+        logger.info("Breach tools registered")
+        
+        # Register shodan tools
+        register_shodan_tools(mcp, command_runner, logger, config)
+        logger.info("Shodan tools registered")
+        
         # Register crtsh tools
         register_crtsh_tools(mcp, command_runner, logger, config)
         logger.info("crt.sh tools registered")
@@ -128,6 +142,10 @@ def create_server() -> FastMCP:
         # Register wayback tools
         register_wayback_tools(mcp, command_runner, logger, config)
         logger.info("Wayback tools registered")
+        
+        # Register github tools
+        register_github_tools(mcp, command_runner, logger, config)
+        logger.info("GitHub tools registered")
         
         # Register wpscan tools
         register_wpscan_tools(mcp, command_runner, logger, config)
@@ -140,6 +158,10 @@ def create_server() -> FastMCP:
         # Register shodan tools
         register_shodan_tools(mcp, command_runner, logger, config)
         logger.info("Shodan tools registered")
+        
+        # Register crtsh tools
+        register_crtsh_tools(mcp, command_runner, logger, config)
+        logger.info("crt.sh tools registered")
         
         logger.info("All tools registered successfully")
         
