@@ -73,6 +73,7 @@ def create_server() -> FastMCP:
             register_gobuster_tools,
             register_dirb_tools,
             register_nikto_tools,
+            register_sqlmap_tools,
         )
         
         # Register system tools
@@ -110,6 +111,10 @@ def create_server() -> FastMCP:
         # Register nikto tools
         register_nikto_tools(mcp, command_runner, logger, config)
         logger.info("Nikto tools registered")
+        
+        # Register sqlmap tools
+        register_sqlmap_tools(mcp, command_runner, logger, config)
+        logger.info("SQLMap tools registered")
         
         logger.info("All tools registered successfully")
         

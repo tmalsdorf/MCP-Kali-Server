@@ -28,6 +28,7 @@ This server is designed with **defense-in-depth** security principles:
 - **`gobuster_scan`** - Directory brute-forcing with gobuster
 - **`dirb_scan`** - Directory brute-forcing with dirb
 - **`nikto_scan`** - Web vulnerability scanning with nikto
+- **`sqlmap_scan`** - SQL injection detection with sqlmap (detection only, no exploitation)
 - **`http_headers_check`** - HTTP header analysis
 - **`ssl_certificate_check`** - SSL/TLS certificate validation
 
@@ -278,6 +279,25 @@ Returns:
 ```
 
 **Note**: By default, public IP addresses are blocked. Set `allow_public_ips: true` in `config.yaml` to enable scanning public targets.
+
+### SQLMap Scan
+
+```python
+sqlmap_scan(target="http://example.com/page?id=1")
+```
+
+Returns:
+```json
+{
+  "success": true,
+  "target": "http://example.com/page?id=1",
+  "databases": ["[*] information_schema", "[*] test_db"],
+  "vulnerabilities": ["parameter 'id' appears to be injectable", ...],
+  "raw_output": "..."
+}
+```
+
+**Important**: SQLMap is configured for detection only (risk=1, level=1, --dbs). No exploitation or data extraction is performed. By default, public IP addresses are blocked. Set `allow_public_ips: true` in `config.yaml` to enable scanning public targets.
 
 ### HTTP Headers Check
 

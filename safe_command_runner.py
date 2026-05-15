@@ -54,6 +54,7 @@ class SafeCommandRunner:
             'gobuster',
             'dirb',
             'nikto',
+            'sqlmap',
         }
     
     def run(
