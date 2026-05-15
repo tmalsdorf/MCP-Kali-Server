@@ -101,6 +101,20 @@ tools:
     # Scan timeout in seconds
     scan_timeout: 180
 
+  # GitHub settings
+  github:
+    # GitHub API token (get from https://github.com/settings/tokens)
+    api_key: ""
+    # Scan timeout in seconds
+    scan_timeout: 30
+
+  # Breach settings
+  breach:
+    # Have I Been Pwned API key (get from https://haveibeenpwned.com/API/Key)
+    api_key: ""
+    # Scan timeout in seconds
+    scan_timeout: 30
+
   # WPScan settings
   wpscan:
     # Scan timeout in seconds
