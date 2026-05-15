@@ -32,6 +32,7 @@ This server is designed with **defense-in-depth** security principles:
 - **`wpscan_scan`** - WordPress vulnerability scanning with wpscan
 - **`http_headers_check`** - HTTP header analysis
 - **`ssl_certificate_check`** - SSL/TLS certificate validation
+- **`theharvester_passive`** - Passive email/domain discovery using theHarvester
 
 ### Safety Guardrails
 
@@ -62,14 +63,14 @@ On Kali Linux (most tools are pre-installed):
 
 ```bash
 sudo apt update
-sudo apt install dnsutils whois nmap curl python3-openssl
+sudo apt install dnsutils whois nmap curl python3-openssl theharvester
 ```
 
 On Ubuntu/Debian:
 
 ```bash
 sudo apt update
-sudo apt install dnsutils whois nmap curl python3-openssl lsb-release
+sudo apt install dnsutils whois nmap curl python3-openssl lsb-release theharvester
 ```
 
 ### Install Python Dependencies
@@ -361,6 +362,30 @@ Returns:
   }
 }
 ```
+
+### theHarvester Passive Scan
+
+```python
+theharvester_passive(domain="example.com", sources="all")
+```
+
+Returns:
+```json
+{
+  "success": true,
+  "domain": "example.com",
+  "sources": "all",
+  "emails": ["info@example.com", "admin@example.com"],
+  "hosts": ["192.168.1.1"],
+  "subdomains": ["www.example.com", "mail.example.com"],
+  "email_count": 2,
+  "host_count": 1,
+  "subdomain_count": 2,
+  "raw_output": "..."
+}
+```
+
+**Note**: This tool uses ONLY passive sources (no active DNS queries). Allowed sources: bing, google, pgp, virustotal, crtsh, securitytrails, shodan, hunter, censys, spyse, mcafee. Use "all" for comprehensive passive search.
 
 ## Project Structure
 
