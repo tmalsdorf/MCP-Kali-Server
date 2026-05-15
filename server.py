@@ -75,6 +75,10 @@ def create_server() -> FastMCP:
             register_nikto_tools,
             register_sqlmap_tools,
             register_wpscan_tools,
+            register_theharvester_tools,
+            register_shodan_tools,
+            register_crtsh_tools,
+            register_wayback_tools,
         )
         
         # Register system tools
@@ -117,9 +121,25 @@ def create_server() -> FastMCP:
         register_sqlmap_tools(mcp, command_runner, logger, config)
         logger.info("SQLMap tools registered")
         
+        # Register crtsh tools
+        register_crtsh_tools(mcp, command_runner, logger, config)
+        logger.info("crt.sh tools registered")
+        
+        # Register wayback tools
+        register_wayback_tools(mcp, command_runner, logger, config)
+        logger.info("Wayback tools registered")
+        
         # Register wpscan tools
         register_wpscan_tools(mcp, command_runner, logger, config)
         logger.info("WPScan tools registered")
+        
+        # Register theharvester tools
+        register_theharvester_tools(mcp, command_runner, logger, config)
+        logger.info("theHarvester tools registered")
+        
+        # Register shodan tools
+        register_shodan_tools(mcp, command_runner, logger, config)
+        logger.info("Shodan tools registered")
         
         logger.info("All tools registered successfully")
         
