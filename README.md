@@ -29,6 +29,7 @@ This server is designed with **defense-in-depth** security principles:
 - **`dirb_scan`** - Directory brute-forcing with dirb
 - **`nikto_scan`** - Web vulnerability scanning with nikto
 - **`sqlmap_scan`** - SQL injection detection with sqlmap (detection only, no exploitation)
+- **`wpscan_scan`** - WordPress vulnerability scanning with wpscan
 - **`http_headers_check`** - HTTP header analysis
 - **`ssl_certificate_check`** - SSL/TLS certificate validation
 
@@ -298,6 +299,26 @@ Returns:
 ```
 
 **Important**: SQLMap is configured for detection only (risk=1, level=1, --dbs). No exploitation or data extraction is performed. By default, public IP addresses are blocked. Set `allow_public_ips: true` in `config.yaml` to enable scanning public targets.
+
+### WPScan Scan
+
+```python
+wpscan_scan(target="http://example.com")
+```
+
+Returns:
+```json
+{
+  "success": true,
+  "target": "http://example.com",
+  "vulnerabilities": ["WordPress version 5.8.1 has known vulnerabilities", ...],
+  "plugins": ["plugin1: vulnerable", "plugin2: secure"],
+  "themes": ["theme1: vulnerable"],
+  "raw_output": "..."
+}
+```
+
+**Note**: WPScan enumerates vulnerable plugins and themes only (no brute-force or exploitation). By default, public IP addresses are blocked. Set `allow_public_ips: true` in `config.yaml` to enable scanning public targets.
 
 ### HTTP Headers Check
 

@@ -13,6 +13,7 @@ from .gobuster_tools import register_gobuster_tools
 from .dirb_tools import register_dirb_tools
 from .nikto_tools import register_nikto_tools
 from .sqlmap_tools import register_sqlmap_tools
+from .wpscan_tools import register_wpscan_tools
 
 __all__ = [
     'register_system_tools',
@@ -25,4 +26,5 @@ __all__ = [
     'register_dirb_tools',
     'register_nikto_tools',
     'register_sqlmap_tools',
+    'register_wpscan_tools',
 ]
