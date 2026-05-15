@@ -53,6 +53,7 @@ class SafeCommandRunner:
             'openssl',
             'gobuster',
             'dirb',
+            'nikto',
         }
     
     def run(
