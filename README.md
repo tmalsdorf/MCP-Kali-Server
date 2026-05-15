@@ -27,6 +27,7 @@ This server is designed with **defense-in-depth** security principles:
 - **`nmap_scan`** - Safe network scanning (quick or service detection)
 - **`gobuster_scan`** - Directory brute-forcing with gobuster
 - **`dirb_scan`** - Directory brute-forcing with dirb
+- **`nikto_scan`** - Web vulnerability scanning with nikto
 - **`http_headers_check`** - HTTP header analysis
 - **`ssl_certificate_check`** - SSL/TLS certificate validation
 
@@ -254,6 +255,24 @@ Returns:
   "target": "http://example.com",
   "wordlist": "/usr/share/wordlists/dirb/common.txt",
   "results": ["http://example.com/admin", "http://example.com/login", ...],
+  "raw_output": "..."
+}
+```
+
+**Note**: By default, public IP addresses are blocked. Set `allow_public_ips: true` in `config.yaml` to enable scanning public targets.
+
+### Nikto Scan
+
+```python
+nikto_scan(target="http://example.com")
+```
+
+Returns:
+```json
+{
+  "success": true,
+  "target": "http://example.com",
+  "vulnerabilities": ["+ OSVDB-1234: X-Frame-Options header not set", ...],
   "raw_output": "..."
 }
 ```
