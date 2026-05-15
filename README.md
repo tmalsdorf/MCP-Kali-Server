@@ -371,14 +371,75 @@ Returns:
 
 ```python
 theharvester_passive(domain="example.com", sources="all")
+```
+
+Returns:
+```json
+{
+  "success": true,
+  "domain": "example.com",
+  "sources": "all",
+  "emails": ["info@example.com", "admin@example.com"],
+  "hosts": ["192.168.1.1"],
+  "subdomains": ["www.example.com", "mail.example.com"],
+  "email_count": 2,
+  "host_count": 1,
+  "subdomain_count": 2,
+  "raw_output": "..."
+}
+```
+
+**Note**: This tool uses ONLY passive sources (no active DNS queries). Allowed sources: bing, google, pgp, virustotal, crtsh, securitytrails, shodan, hunter, censys, spyse, mcafee. Use "all" for comprehensive passive search.
+
 ### Shodan Host Lookup
 
 ```python
 shodan_host_lookup(target="192.168.1.1", api_key="your_api_key")
+```
+
+Returns:
+```json
+{
+  "success": true,
+  "target": "192.168.1.1",
+  "ip": "192.168.1.1",
+  "hostnames": ["example.com"],
+  "country": "United States",
+  "city": "San Francisco",
+  "org": "Example Organization",
+  "isp": "Example ISP",
+  "asn": "AS12345",
+  "ports": [80, 443, 22],
+  "vulns": ["CVE-2021-1234"],
+  "vuln_count": 1,
+  "services": [...],
+  "service_count": 3,
+  "raw_output": "..."
+}
+```
+
+**Note**: Requires a Shodan API key. Get one from https://developer.shodan.io/api. Set the API key in `config.yaml` under `tools.shodan.api_key` or pass as a parameter. This tool queries Shodan's passive database of known exposed services.
+
 ### crt.sh Subdomain Lookup
 
 ```python
 crtsh_lookup(domain="example.com")
+```
+
+Returns:
+```json
+{
+  "success": true,
+  "domain": "example.com",
+  "subdomains": ["www.example.com", "mail.example.com", "api.example.com"],
+  "subdomain_count": 3,
+  "certificate_count": 15,
+  "raw_output": "..."
+}
+```
+
+**Note**: This tool queries crt.sh Certificate Transparency logs to discover subdomains that have SSL/TLS certificates issued. This is a passive technique that reveals subdomains without active DNS enumeration.
+
 ### Wayback URLs Lookup
 
 ```python
@@ -390,16 +451,12 @@ Returns:
 {
   "success": true,
   "domain": "example.com",
-  "subdomains": ["www.example.com", "mail.example.com", "api.example.com"],
-  "subdomain_count": 3,
-  "certificate_count": 15,
   "urls": ["http://example.com/old-page", "https://example.com/api/v1", ...],
   "url_count": 150,
   "raw_output": "..."
 }
 ```
 
-**Note**: This tool queries crt.sh Certificate Transparency logs to discover subdomains that have SSL/TLS certificates issued. This is a passive technique that reveals subdomains without active DNS enumeration.
 **Note**: This tool queries the Wayback Machine for all historical URLs archived for a domain, revealing old endpoints, parameters, and forgotten pages. This is a passive technique that uses the waybackurls tool.
 
 ### GitHub Metadata Search
@@ -429,8 +486,6 @@ Returns:
     }
   ],
   "repo_count": 10,
-  "raw_output": "...",
-  "disclaimer": "Users are responsible for ensuring they have proper authorization before scanning any systems. Unauthorized scanning is illegal in many jurisdictions."
   "raw_output": "..."
 }
 ```
@@ -447,27 +502,6 @@ Returns:
 ```json
 {
   "success": true,
-  "domain": "example.com",
-  "sources": "all",
-  "emails": ["info@example.com", "admin@example.com"],
-  "hosts": ["192.168.1.1"],
-  "subdomains": ["www.example.com", "mail.example.com"],
-  "email_count": 2,
-  "host_count": 1,
-  "subdomain_count": 2,
-  "target": "192.168.1.1",
-  "ip": "192.168.1.1",
-  "hostnames": ["example.com"],
-  "country": "United States",
-  "city": "San Francisco",
-  "org": "Example Organization",
-  "isp": "Example ISP",
-  "asn": "AS12345",
-  "ports": [80, 443, 22],
-  "vulns": ["CVE-2021-1234"],
-  "vuln_count": 1,
-  "services": [...],
-  "service_count": 3,
   "domain": "example.com",
   "breaches": [
     {
@@ -489,8 +523,6 @@ Returns:
 }
 ```
 
-**Note**: This tool uses ONLY passive sources (no active DNS queries). Allowed sources: bing, google, pgp, virustotal, crtsh, securitytrails, shodan, hunter, censys, spyse, mcafee. Use "all" for comprehensive passive search.
-**Note**: Requires a Shodan API key. Get one from https://developer.shodan.io/api. Set the API key in `config.yaml` under `tools.shodan.api_key` or pass as a parameter. This tool queries Shodan's passive database of known exposed services.
 **Note**: Requires a Have I Been Pwned API key. Get one from https://haveibeenpwned.com/API/Key. Set the API key in `config.yaml` under `tools.breach.api_key` or pass as a parameter. This tool checks if a domain's emails have been involved in any data breaches.
 
 ## Project Structure
