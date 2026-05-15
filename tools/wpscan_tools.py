@@ -4,7 +4,9 @@ Provides safe WordPress vulnerability scanning functionality with strict guardra
 """
 
 import logging
+import ipaddress
 from typing import Any
+from urllib.parse import urlparse
 from mcp.server.fastmcp import FastMCP
 from safe_command_runner import SafeCommandRunner
 from input_validation import InputValidator
@@ -65,12 +67,10 @@ def register_wpscan_tools(
         
         # Check if target is a public IP
         try:
-            from urllib.parse import urlparse
             parsed_url = urlparse(target if is_url else f"http://{target}")
             hostname = parsed_url.hostname or target
             
             # Check if it's an IP address
-            import ipaddress
             try:
                 ip = ipaddress.ip_address(hostname)
                 if not validator.validate_ip_address(hostname, allow_public=allow_public_ips):

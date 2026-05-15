@@ -151,11 +151,6 @@ def create_server() -> FastMCP:
         register_wpscan_tools(mcp, command_runner, logger, config)
         logger.info("WPScan tools registered")
         
-        # Register theharvester tools
-        register_theharvester_tools(mcp, command_runner, logger, config)
-        logger.info("theHarvester tools registered")
-        
-       
         logger.info("All tools registered successfully")
         
     except ImportError as e:
