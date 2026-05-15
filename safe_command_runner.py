@@ -56,6 +56,8 @@ class SafeCommandRunner:
             'nikto',
             'sqlmap',
             'wpscan',
+            'theHarvester',
+            'waybackurls',
         }
     
     def run(

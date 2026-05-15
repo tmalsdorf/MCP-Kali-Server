@@ -80,6 +80,7 @@ def create_server() -> FastMCP:
             register_crtsh_tools,
             register_wayback_tools,
             register_github_tools,
+            register_breach_tools,
         )
         
         # Register system tools
@@ -122,6 +123,14 @@ def create_server() -> FastMCP:
         register_sqlmap_tools(mcp, command_runner, logger, config)
         logger.info("SQLMap tools registered")
         
+        # Register theharvester tools
+        register_theharvester_tools(mcp, command_runner, logger, config)
+        logger.info("theHarvester tools registered")
+        
+        # Register breach tools
+        register_breach_tools(mcp, command_runner, logger, config)
+        logger.info("Breach tools registered")
+        
         # Register shodan tools
         register_shodan_tools(mcp, command_runner, logger, config)
         logger.info("Shodan tools registered")
@@ -146,6 +155,7 @@ def create_server() -> FastMCP:
         register_theharvester_tools(mcp, command_runner, logger, config)
         logger.info("theHarvester tools registered")
         
+       
         logger.info("All tools registered successfully")
         
     except ImportError as e:
