@@ -368,6 +368,10 @@ Returns:
 }
 ```
 
+### crt.sh Subdomain Lookup
+
+```python
+crtsh_lookup(domain="example.com")
 ### Wayback URLs Lookup
 
 ```python
@@ -379,12 +383,16 @@ Returns:
 {
   "success": true,
   "domain": "example.com",
+  "subdomains": ["www.example.com", "mail.example.com", "api.example.com"],
+  "subdomain_count": 3,
+  "certificate_count": 15,
   "urls": ["http://example.com/old-page", "https://example.com/api/v1", ...],
   "url_count": 150,
   "raw_output": "..."
 }
 ```
 
+**Note**: This tool queries crt.sh Certificate Transparency logs to discover subdomains that have SSL/TLS certificates issued. This is a passive technique that reveals subdomains without active DNS enumeration.
 **Note**: This tool queries the Wayback Machine for all historical URLs archived for a domain, revealing old endpoints, parameters, and forgotten pages. This is a passive technique that uses the waybackurls tool.
 
 ### GitHub Metadata Search

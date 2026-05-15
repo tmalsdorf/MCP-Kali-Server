@@ -101,6 +101,9 @@ tools:
     # Scan timeout in seconds
     scan_timeout: 180
 
+  # Shodan settings
+  shodan:
+    # Shodan API key (get from https://developer.shodan.io/api)
   # GitHub settings
   github:
     # GitHub API token (get from https://github.com/settings/tokens)
@@ -108,6 +111,8 @@ tools:
     # Scan timeout in seconds
     scan_timeout: 30
 
+  # crt.sh settings
+  crtsh:
   # Breach settings
   breach:
     # Have I Been Pwned API key (get from https://haveibeenpwned.com/API/Key)
