@@ -17,6 +17,9 @@ from .wpscan_tools import register_wpscan_tools
 from .theharvester_tools import register_theharvester_tools
 from .shodan_tools import register_shodan_tools
 from .crtsh_tools import register_crtsh_tools
+from .wayback_tools import register_wayback_tools
+from .github_tools import register_github_tools
+from .breach_tools import register_breach_tools
 
 __all__ = [
     'register_system_tools',
@@ -33,4 +36,7 @@ __all__ = [
     'register_theharvester_tools',
     'register_shodan_tools',
     'register_crtsh_tools',
+    'register_wayback_tools',
+    'register_github_tools',
+    'register_breach_tools',
 ]
