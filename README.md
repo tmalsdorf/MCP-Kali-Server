@@ -429,6 +429,8 @@ Returns:
     }
   ],
   "repo_count": 10,
+  "raw_output": "...",
+  "disclaimer": "Users are responsible for ensuring they have proper authorization before scanning any systems. Unauthorized scanning is illegal in many jurisdictions."
   "raw_output": "..."
 }
 ```

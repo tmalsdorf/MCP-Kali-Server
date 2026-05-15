@@ -155,14 +155,7 @@ def create_server() -> FastMCP:
         register_theharvester_tools(mcp, command_runner, logger, config)
         logger.info("theHarvester tools registered")
         
-        # Register shodan tools
-        register_shodan_tools(mcp, command_runner, logger, config)
-        logger.info("Shodan tools registered")
-        
-        # Register crtsh tools
-        register_crtsh_tools(mcp, command_runner, logger, config)
-        logger.info("crt.sh tools registered")
-        
+       
         logger.info("All tools registered successfully")
         
     except ImportError as e:
