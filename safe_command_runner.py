@@ -55,6 +55,7 @@ class SafeCommandRunner:
             'dirb',
             'nikto',
             'sqlmap',
+            'wpscan',
         }
     
     def run(

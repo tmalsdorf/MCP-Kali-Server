@@ -74,6 +74,7 @@ def create_server() -> FastMCP:
             register_dirb_tools,
             register_nikto_tools,
             register_sqlmap_tools,
+            register_wpscan_tools,
         )
         
         # Register system tools
@@ -115,6 +116,10 @@ def create_server() -> FastMCP:
         # Register sqlmap tools
         register_sqlmap_tools(mcp, command_runner, logger, config)
         logger.info("SQLMap tools registered")
+        
+        # Register wpscan tools
+        register_wpscan_tools(mcp, command_runner, logger, config)
+        logger.info("WPScan tools registered")
         
         logger.info("All tools registered successfully")
         
