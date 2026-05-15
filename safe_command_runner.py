@@ -57,6 +57,7 @@ class SafeCommandRunner:
             'sqlmap',
             'wpscan',
             'theHarvester',
+            'waybackurls',
         }
     
     def run(

@@ -29,7 +29,6 @@ This server is designed with **defense-in-depth** security principles:
 - **`dirb_scan`** - Directory brute-forcing with dirb
 - **`nikto_scan`** - Web vulnerability scanning with nikto
 - **`sqlmap_scan`** - SQL injection detection with sqlmap (detection only, no exploitation)
-- **`wpscan_scan`** - WordPress vulnerability scanning with wpscan
 - **`http_headers_check`** - HTTP header analysis
 - **`ssl_certificate_check`** - SSL/TLS certificate validation
 - **`theharvester_passive`** - Passive email/domain discovery using theHarvester
