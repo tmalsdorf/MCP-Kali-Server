@@ -130,6 +130,11 @@ tools:
     # Scan timeout in seconds
     scan_timeout: 180
 
+  # theHarvester settings
+  theharvester:
+    # Scan timeout in seconds
+    scan_timeout: 120
+
 # Logging settings
 logging:
   # Log all tool calls

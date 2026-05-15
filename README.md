@@ -68,14 +68,14 @@ On Kali Linux (most tools are pre-installed):
 
 ```bash
 sudo apt update
-sudo apt install dnsutils whois nmap curl python3-openssl
+sudo apt install dnsutils whois nmap curl python3-openssl theharvester
 ```
 
 On Ubuntu/Debian:
 
 ```bash
 sudo apt update
-sudo apt install dnsutils whois nmap curl python3-openssl lsb-release
+sudo apt install dnsutils whois nmap curl python3-openssl lsb-release theharvester
 ```
 
 ### Install Python Dependencies
@@ -368,6 +368,10 @@ Returns:
 }
 ```
 
+### theHarvester Passive Scan
+
+```python
+theharvester_passive(domain="example.com", sources="all")
 ### Shodan Host Lookup
 
 ```python
@@ -442,6 +446,14 @@ Returns:
 ```json
 {
   "success": true,
+  "domain": "example.com",
+  "sources": "all",
+  "emails": ["info@example.com", "admin@example.com"],
+  "hosts": ["192.168.1.1"],
+  "subdomains": ["www.example.com", "mail.example.com"],
+  "email_count": 2,
+  "host_count": 1,
+  "subdomain_count": 2,
   "target": "192.168.1.1",
   "ip": "192.168.1.1",
   "hostnames": ["example.com"],
@@ -476,6 +488,7 @@ Returns:
 }
 ```
 
+**Note**: This tool uses ONLY passive sources (no active DNS queries). Allowed sources: bing, google, pgp, virustotal, crtsh, securitytrails, shodan, hunter, censys, spyse, mcafee. Use "all" for comprehensive passive search.
 **Note**: Requires a Shodan API key. Get one from https://developer.shodan.io/api. Set the API key in `config.yaml` under `tools.shodan.api_key` or pass as a parameter. This tool queries Shodan's passive database of known exposed services.
 **Note**: Requires a Have I Been Pwned API key. Get one from https://haveibeenpwned.com/API/Key. Set the API key in `config.yaml` under `tools.breach.api_key` or pass as a parameter. This tool checks if a domain's emails have been involved in any data breaches.
 
