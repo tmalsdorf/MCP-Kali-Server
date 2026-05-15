@@ -14,6 +14,8 @@ from .dirb_tools import register_dirb_tools
 from .nikto_tools import register_nikto_tools
 from .sqlmap_tools import register_sqlmap_tools
 from .wpscan_tools import register_wpscan_tools
+from .theharvester_tools import register_theharvester_tools
+from .shodan_tools import register_shodan_tools
 
 __all__ = [
     'register_system_tools',
@@ -27,4 +29,6 @@ __all__ = [
     'register_nikto_tools',
     'register_sqlmap_tools',
     'register_wpscan_tools',
+    'register_theharvester_tools',
+    'register_shodan_tools',
 ]

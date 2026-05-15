@@ -101,6 +101,18 @@ tools:
     # Scan timeout in seconds
     scan_timeout: 180
 
+  # theHarvester settings
+  theharvester:
+    # Scan timeout in seconds
+    scan_timeout: 120
+
+  # Shodan settings
+  shodan:
+    # Shodan API key (get from https://developer.shodan.io/api)
+    api_key: ""
+    # Scan timeout in seconds
+    scan_timeout: 30
+
   # WPScan settings
   wpscan:
     # Scan timeout in seconds

@@ -32,6 +32,8 @@ This server is designed with **defense-in-depth** security principles:
 - **`wpscan_scan`** - WordPress vulnerability scanning with wpscan
 - **`http_headers_check`** - HTTP header analysis
 - **`ssl_certificate_check`** - SSL/TLS certificate validation
+- **`theharvester_passive`** - Passive email/domain discovery using theHarvester
+- **`shodan_host_lookup`** - Shodan API host lookup for exposed services
 
 ### Safety Guardrails
 
@@ -361,6 +363,35 @@ Returns:
   }
 }
 ```
+
+### Shodan Host Lookup
+
+```python
+shodan_host_lookup(target="192.168.1.1", api_key="your_api_key")
+```
+
+Returns:
+```json
+{
+  "success": true,
+  "target": "192.168.1.1",
+  "ip": "192.168.1.1",
+  "hostnames": ["example.com"],
+  "country": "United States",
+  "city": "San Francisco",
+  "org": "Example Organization",
+  "isp": "Example ISP",
+  "asn": "AS12345",
+  "ports": [80, 443, 22],
+  "vulns": ["CVE-2021-1234"],
+  "vuln_count": 1,
+  "services": [...],
+  "service_count": 3,
+  "raw_output": "..."
+}
+```
+
+**Note**: Requires a Shodan API key. Get one from https://developer.shodan.io/api. Set the API key in `config.yaml` under `tools.shodan.api_key` or pass as a parameter. This tool queries Shodan's passive database of known exposed services.
 
 ## Project Structure
 
