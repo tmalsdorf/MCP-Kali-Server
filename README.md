@@ -32,6 +32,9 @@ This server is designed with **defense-in-depth** security principles:
 - **`wpscan_scan`** - WordPress vulnerability scanning with wpscan
 - **`http_headers_check`** - HTTP header analysis
 - **`ssl_certificate_check`** - SSL/TLS certificate validation
+- **`theharvester_passive`** - Passive email/domain discovery using theHarvester
+- **`shodan_host_lookup`** - Shodan API host lookup for exposed services
+- **`crtsh_lookup`** - Certificate Transparency subdomain discovery
 
 ### Safety Guardrails
 
@@ -361,6 +364,26 @@ Returns:
   }
 }
 ```
+
+### crt.sh Subdomain Lookup
+
+```python
+crtsh_lookup(domain="example.com")
+```
+
+Returns:
+```json
+{
+  "success": true,
+  "domain": "example.com",
+  "subdomains": ["www.example.com", "mail.example.com", "api.example.com"],
+  "subdomain_count": 3,
+  "certificate_count": 15,
+  "raw_output": "..."
+}
+```
+
+**Note**: This tool queries crt.sh Certificate Transparency logs to discover subdomains that have SSL/TLS certificates issued. This is a passive technique that reveals subdomains without active DNS enumeration.
 
 ## Project Structure
 
