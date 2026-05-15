@@ -32,6 +32,11 @@ This server is designed with **defense-in-depth** security principles:
 - **`wpscan_scan`** - WordPress vulnerability scanning with wpscan
 - **`http_headers_check`** - HTTP header analysis
 - **`ssl_certificate_check`** - SSL/TLS certificate validation
+- **`theharvester_passive`** - Passive email/domain discovery using theHarvester
+- **`shodan_host_lookup`** - Shodan API host lookup for exposed services
+- **`crtsh_lookup`** - Certificate Transparency subdomain discovery
+- **`wayback_urls_lookup`** - Historical URL discovery via Wayback Machine
+- **`github_metadata_search`** - GitHub API public repository metadata search
 
 ### Safety Guardrails
 
@@ -361,6 +366,59 @@ Returns:
   }
 }
 ```
+
+### Wayback URLs Lookup
+
+```python
+wayback_urls_lookup(domain="example.com")
+```
+
+Returns:
+```json
+{
+  "success": true,
+  "domain": "example.com",
+  "urls": ["http://example.com/old-page", "https://example.com/api/v1", ...],
+  "url_count": 150,
+  "raw_output": "..."
+}
+```
+
+**Note**: This tool queries the Wayback Machine for all historical URLs archived for a domain, revealing old endpoints, parameters, and forgotten pages. This is a passive technique that uses the waybackurls tool.
+
+### GitHub Metadata Search
+
+```python
+github_metadata_search(query="language:python security", api_key="your_api_key")
+```
+
+Returns:
+```json
+{
+  "success": true,
+  "query": "language:python security",
+  "total_count": 1234,
+  "repositories": [
+    {
+      "name": "security-tool",
+      "full_name": "user/security-tool",
+      "description": "A security analysis tool",
+      "language": "Python",
+      "stars": 150,
+      "forks": 30,
+      "open_issues": 5,
+      "url": "https://github.com/user/security-tool",
+      "created_at": "2023-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  ],
+  "repo_count": 10,
+  "raw_output": "...",
+  "disclaimer": "Users are responsible for ensuring they have proper authorization before scanning any systems. Unauthorized scanning is illegal in many jurisdictions."
+}
+```
+
+**Note**: Requires a GitHub API token for higher rate limits. Get one from https://github.com/settings/tokens. Set the API key in `config.yaml` under `tools.github.api_key` or pass as a parameter. This tool searches public repositories only.
 
 ## Project Structure
 
